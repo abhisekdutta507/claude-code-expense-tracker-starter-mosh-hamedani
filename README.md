@@ -41,3 +41,21 @@ Press SHIFT + TAB from Keyboard to toggle through different modes.
 - Plan Mode
 - Auto-Accept Mode
 - Bypass Mode
+
+#### How much will it cost?
+
+If you are using Pay as you go API:
+
+```sh
+/cost
+```
+
+#### How can we reduce cost?
+
+```
+/compact
+```
+
+```
+/clean
+```
