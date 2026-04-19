@@ -17,19 +17,19 @@ Then open your browser at `http://localhost:5173`.
 
 #### Set the AI model for Claude Code
 
-```sh
+```bash
 /model
 ```
 
 #### Setup terminal for multiline commands
 
-```sh
+```bash
 /terminal-setup
 ```
 
 #### Initialize Claude Code memory in the project's root
 
-```sh
+```bash
 /init
 ```
 
@@ -46,16 +46,16 @@ Press SHIFT + TAB from Keyboard to toggle through different modes.
 
 If you are using Pay as you go API:
 
-```sh
+```bash
 /cost
 ```
 
 #### How can we reduce cost?
 
-```
-/compact
-```
+##### /clear Command
 
-```
-/clean
-```
+`/clear` starts a fresh conversation with an empty context, completely wiping your conversation history. This is useful when you're wrapping up a task and moving on to something entirely different.
+
+##### /compact Command
+
+`/compact` summarizes your entire conversation history to free up context space, then replaces the full message history with that condensed summary. Instead of erasing everything like `/clear` does, it lets you preserve continuity while reducing token usage.
