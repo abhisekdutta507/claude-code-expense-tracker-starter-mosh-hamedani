@@ -50,6 +50,14 @@ If you are using Pay as you go API:
 /cost
 ```
 
+#### How much context we are using?
+
+It displays the total usage of the available contexts.
+
+```bash
+/context
+```
+
 #### How can we reduce cost?
 
 ##### /clear Command
