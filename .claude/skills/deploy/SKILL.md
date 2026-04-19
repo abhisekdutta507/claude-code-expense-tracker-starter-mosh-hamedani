@@ -1,4 +1,8 @@
-# Deploy Skill
+---
+name: deploy
+description: Deploy the application by running tests, building and pushing.
+license: Complete terms in LICENSE.txt
+---
 
 Deploy the application by running tests, building and pushing.
 

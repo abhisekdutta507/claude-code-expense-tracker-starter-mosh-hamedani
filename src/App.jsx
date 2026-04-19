@@ -27,8 +27,15 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Finance Tracker</h1>
-      <p className="subtitle">Track your income and expenses</p>
+      <header className="app-header">
+        <div className="app-brand">
+          <span className="app-logo">◈</span>
+          <div>
+            <h1>Finance Tracker</h1>
+            <p className="subtitle">Track your income and expenses</p>
+          </div>
+        </div>
+      </header>
       <Summary transactions={transactions} />
       <SpendingChart transactions={transactions} />
       <TransactionForm onAdd={handleAdd} />

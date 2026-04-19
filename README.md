@@ -67,3 +67,45 @@ It displays the total usage of the available contexts.
 ##### /compact Command
 
 `/compact` summarizes your entire conversation history to free up context space, then replaces the full message history with that condensed summary. Instead of erasing everything like `/clear` does, it lets you preserve continuity while reducing token usage.
+
+#### Connect your first local MCP server
+
+Visit [context7.com/dashboard](https://context7.com/dashboard)
+
+##### Install context7 locally
+
+```bash
+claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp --api-key YOUR_API_KEY
+```
+
+##### List the MCP servers
+
+```bash
+/mcp
+```
+
+#### Create a custom SKILL
+
+```bash
+create a custom skill called <<skill name>>. some description of the skill.
+```
+
+Then run the skill,
+
+```bash
+/deploy
+```
+
+#### Add an existing SKILL
+
+Visit [skillsmp.com](https://skillsmp.com/)
+
+Install your first skill [frontend-design here](https://skillsmp.com/skills/anthropics-claude-code-plugins-frontend-design-skills-frontend-design-skill-md).
+
+Also, you can use the CLI command to add skills.
+
+```bash
+npx skills add anthropics/claude-code
+```
+
+
