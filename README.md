@@ -32,3 +32,12 @@ Then open your browser at `http://localhost:5173`.
 ```sh
 /init
 ```
+
+#### Change Claude modes through CLI
+
+Press SHIFT + TAB from Keyboard to toggle through different modes.
+
+- Normal Mode
+- Plan Mode
+- Auto-Accept Mode
+- Bypass Mode
