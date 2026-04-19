@@ -12,3 +12,23 @@ npm run dev
 ```
 
 Then open your browser at `http://localhost:5173`.
+
+## Claude Code Commands
+
+#### Set the AI model for Claude Code
+
+```sh
+/model
+```
+
+#### Setup terminal for multiline commands
+
+```sh
+/terminal-setup
+```
+
+#### Initialize Claude Code memory in the project's root
+
+```sh
+/init
+```

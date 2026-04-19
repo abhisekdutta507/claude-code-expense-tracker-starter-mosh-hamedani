@@ -15,11 +15,13 @@ No test suite is configured.
 
 ## Architecture
 
-This is a single-component React app (Vite + React 19). All state and logic live in `src/App.jsx`:
+A Vite + React 19 app decomposed into four components:
 
-- **State**: `transactions` array (id, description, amount, type, category, date) plus form and filter state
-- **Summary**: income/expenses/balance computed inline via `reduce` — `amount` is stored as a string, causing string concatenation instead of numeric addition (intentional bug)
-- **Filtering**: `filteredTransactions` derived synchronously from `filterType` and `filterCategory` state
-- **Add form**: `handleSubmit` appends a new transaction; amount is stored as the raw string from the input
+- **`App.jsx`** — root component; owns the `transactions` array (id, description, amount, type, category, date) as the single source of truth and passes it down. Provides `handleAdd` callback to `AddTransaction`.
+- **`Summary.jsx`** — receives `transactions`, computes `totalIncome`, `totalExpenses`, and `balance` via `reduce` internally.
+- **`AddTransaction.jsx`** — manages its own form state (description, amount, type, category); calls `onAdd(transaction)` on submit; `amount` is stored as a `parseFloat` number.
+- **`TransactionList.jsx`** — receives `transactions`, manages its own filter state (filterType, filterCategory) internally.
+
+`categories` is a local constant duplicated in `AddTransaction` and `TransactionList` (not yet shared).
 
 Styling is in `src/App.css` with CSS classes `income-amount`, `expense-amount`, and `balance-amount` for color-coding.
