@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 const categories = ["food", "housing", "utilities", "transport", "entertainment", "salary", "other"];
 
-function AddTransaction({ onAdd }) {
+function TransactionForm({ onAdd }) {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("expense");
@@ -58,4 +58,4 @@ function AddTransaction({ onAdd }) {
   );
 }
 
-export default AddTransaction;
+export default TransactionForm;

@@ -19,7 +19,7 @@ A Vite + React 19 app decomposed into four components:
 
 - **`App.jsx`** — root component; owns the `transactions` array (id, description, amount, type, category, date) as the single source of truth and passes it down. Provides `handleAdd` callback to `AddTransaction`.
 - **`Summary.jsx`** — receives `transactions`, computes `totalIncome`, `totalExpenses`, and `balance` via `reduce` internally.
-- **`AddTransaction.jsx`** — manages its own form state (description, amount, type, category); calls `onAdd(transaction)` on submit; `amount` is stored as a `parseFloat` number.
+- **`TransactionForm.jsx`** — manages its own form state (description, amount, type, category); calls `onAdd(transaction)` on submit; `amount` is stored as a `parseFloat` number.
 - **`TransactionList.jsx`** — receives `transactions`, manages its own filter state (filterType, filterCategory) internally.
 
 `categories` is a local constant duplicated in `AddTransaction` and `TransactionList` (not yet shared).
