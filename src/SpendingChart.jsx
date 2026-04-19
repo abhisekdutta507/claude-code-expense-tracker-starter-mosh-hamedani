@@ -40,9 +40,11 @@ function SpendingChart({ transactions }) {
               border: '1px solid #28283c',
               borderRadius: '8px',
               fontFamily: 'Syne, sans-serif',
-              color: '#dcdcec',
               fontSize: 13,
               boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+            }}
+            itemStyle={{
+              color: '#6c6c98',
             }}
             labelStyle={{ color: '#6c6c98', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 4 }}
             cursor={{ fill: 'rgba(255,255,255,0.03)' }}
