@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 * {
   margin: 0;
@@ -7,30 +7,30 @@
 }
 
 :root {
-  --bg: #0f0f14;
-  --surface: #161620;
-  --surface-raised: #1d1d2a;
-  --border: #28283c;
-  --border-light: #202032;
-  --accent: #d4a843;
-  --accent-dim: rgba(212, 168, 67, 0.12);
-  --income: #3dd68c;
-  --income-dim: rgba(61, 214, 140, 0.12);
-  --expense: #f05858;
-  --expense-dim: rgba(240, 88, 88, 0.12);
-  --text: #dcdcec;
-  --text-muted: #6c6c98;
-  --text-dim: #3a3a52;
+  --bg: #f5f4f0;
+  --surface: #fefefe;
+  --surface-raised: #f9f7f4;
+  --border: #e2ddd6;
+  --border-light: #ede8e2;
+  --accent: #6b7c4e;
+  --accent-dim: rgba(107, 124, 78, 0.1);
+  --income: #4a7c59;
+  --income-dim: rgba(74, 124, 89, 0.1);
+  --expense: #9b4444;
+  --expense-dim: rgba(155, 68, 68, 0.1);
+  --text: #2d2926;
+  --text-muted: #7a6f66;
+  --text-dim: #b5a89e;
   --radius: 14px;
   --radius-sm: 8px;
 }
 
 body {
-  font-family: 'Syne', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse 700px 500px at 8% -10%, rgba(212, 168, 67, 0.07) 0%, transparent 65%),
-    radial-gradient(ellipse 600px 500px at 92% 110%, rgba(61, 214, 140, 0.05) 0%, transparent 65%);
+    radial-gradient(ellipse 700px 500px at 8% -10%, rgba(107, 124, 78, 0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 600px 500px at 92% 110%, rgba(155, 68, 68, 0.05) 0%, transparent 65%);
   color: var(--text);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
