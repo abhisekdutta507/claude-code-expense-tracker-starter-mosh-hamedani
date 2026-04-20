@@ -197,14 +197,70 @@ form input::placeholder {
 }
 
 form input[type="text"] {
+  width: 100%;
+}
+
+form input[type="number"] {
+  width: 100%;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+form input.input-error {
+  border-color: #c0392b;
+}
+
+form input.input-error:focus {
+  border-color: #c0392b;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   flex: 2;
   min-width: 160px;
 }
 
-form input[type="number"] {
+.field:nth-child(2) {
   flex: 1;
   min-width: 100px;
-  font-family: 'JetBrains Mono', monospace;
+}
+
+.field-error {
+  font-size: 11px;
+  color: #c0392b;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ─── Form Error Banner ─── */
+.form-errors {
+  background: color-mix(in srgb, #c0392b 8%, transparent);
+  border: 1px solid color-mix(in srgb, #c0392b 25%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: fadeUp 0.2s ease both;
+}
+
+.form-error-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #c0392b;
+}
+
+.form-error-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c0392b;
+  flex-shrink: 0;
 }
 
 form select {

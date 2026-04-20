@@ -1,16 +1,18 @@
+import { useMemo } from 'react'
 import { BarChart, Bar, Cell, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 const COLORS = ['#c47c2a', '#4a7c59', '#9b4444', '#4a7aaa', '#8b6baa', '#4a8a7a', '#b07a3a'];
 
 function SpendingChart({ transactions }) {
-  const expensesByCategory = transactions
-    .filter(t => t.type === 'expense')
-    .reduce((acc, t) => {
-      acc[t.category] = (acc[t.category] || 0) + t.amount;
-      return acc;
-    }, {});
-
-  const data = Object.entries(expensesByCategory).map(([name, value]) => ({ name, value }));
+  const data = useMemo(() => {
+    const byCategory = transactions
+      .filter(t => t.type === 'expense')
+      .reduce((acc, t) => {
+        acc[t.category] = (acc[t.category] || 0) + t.amount;
+        return acc;
+      }, {});
+    return Object.entries(byCategory).map(([name, value]) => ({ name, value }));
+  }, [transactions]);
 
   if (data.length === 0) return null;
 
@@ -50,8 +52,8 @@ function SpendingChart({ transactions }) {
             cursor={{ fill: 'rgba(107,124,78,0.05)' }}
           />
           <Bar dataKey="value" name="Spending" radius={[5, 5, 0, 0]}>
-            {data.map((_, index) => (
-              <Cell key={index} fill={COLORS[index % COLORS.length]} opacity={0.9} />
+            {data.map((entry, index) => (
+              <Cell key={entry.name} fill={COLORS[index % COLORS.length]} opacity={0.9} />
             ))}
           </Bar>
         </BarChart>

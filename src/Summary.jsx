@@ -1,13 +1,17 @@
+import { useMemo } from 'react'
+
 function Summary({ transactions }) {
-  const totalIncome = transactions
-    .filter(t => t.type === "income")
-    .reduce((sum, t) => sum + t.amount, 0);
-
-  const totalExpenses = transactions
-    .filter(t => t.type === "expense")
-    .reduce((sum, t) => sum + t.amount, 0);
-
-  const balance = totalIncome - totalExpenses;
+  const { totalIncome, totalExpenses, balance } = useMemo(() => {
+    const { totalIncome, totalExpenses } = transactions.reduce(
+      (acc, t) => {
+        if (t.type === 'income') acc.totalIncome += t.amount;
+        else acc.totalExpenses += t.amount;
+        return acc;
+      },
+      { totalIncome: 0, totalExpenses: 0 }
+    );
+    return { totalIncome, totalExpenses, balance: totalIncome - totalExpenses };
+  }, [transactions]);
 
   return (
     <div className="summary">

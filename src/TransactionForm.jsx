@@ -1,21 +1,29 @@
 import { useState } from 'react'
-
-const categories = ["food", "housing", "utilities", "transport", "entertainment", "salary", "other"];
+import { CATEGORIES } from './CATEGORIES.js'
 
 function TransactionForm({ onAdd }) {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("expense");
   const [category, setCategory] = useState("food");
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!description || !amount) return;
+    const parsedAmount = parseFloat(amount);
+    const newErrors = {};
+    if (!description.trim()) newErrors.description = "Description is required.";
+    if (!amount) newErrors.amount = "Amount is required.";
+    else if (isNaN(parsedAmount) || parsedAmount <= 0) newErrors.amount = "Amount must be a positive number.";
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
     onAdd({
-      id: Date.now(),
+      id: crypto.randomUUID(),
       description,
-      amount: parseFloat(amount),
+      amount: parsedAmount,
       type,
       category,
       date: new Date().toISOString().split('T')[0],
@@ -25,30 +33,51 @@ function TransactionForm({ onAdd }) {
     setAmount("");
     setType("expense");
     setCategory("food");
+    setErrors({});
   };
+
+  const errorList = Object.entries(errors).filter(([, v]) => v);
 
   return (
     <div className="add-transaction">
       <h2>Add Transaction</h2>
+      {errorList.length > 0 && (
+        <div className="form-errors">
+          {errorList.map(([field, msg]) => (
+            <div key={field} className="form-error-item">
+              <span className="form-error-dot" />
+              {msg}
+            </div>
+          ))}
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
+        <div className="field">
+          <input
+            type="text"
+            placeholder="Description"
+            value={description}
+            className={errors.description ? 'input-error' : ''}
+            onChange={(e) => { setDescription(e.target.value); setErrors(prev => ({ ...prev, description: undefined })); }}
+          />
+        </div>
+        <div className="field">
+          <input
+            type="number"
+            placeholder="Amount"
+            value={amount}
+            className={errors.amount ? 'input-error' : ''}
+            onChange={(e) => { setAmount(e.target.value); setErrors(prev => ({ ...prev, amount: undefined })); }}
+            min="0.01"
+            step="0.01"
+          />
+        </div>
         <select value={type} onChange={(e) => setType(e.target.value)}>
           <option value="income">Income</option>
           <option value="expense">Expense</option>
         </select>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          {categories.map(cat => (
+          {CATEGORIES.map(cat => (
             <option key={cat} value={cat}>{cat}</option>
           ))}
         </select>
