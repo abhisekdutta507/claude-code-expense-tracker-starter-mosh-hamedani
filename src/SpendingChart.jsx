@@ -1,6 +1,6 @@
 import { BarChart, Bar, Cell, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 
-const COLORS = ['#d4a843', '#3dd68c', '#f05858', '#5b9ef4', '#c47bf5', '#5be0d4', '#f4a15b'];
+const COLORS = ['#0ea5e9', '#059669', '#f59e0b', '#7c3aed', '#ec4899', '#06b6d4', '#dc2626'];
 
 function SpendingChart({ transactions }) {
   const expensesByCategory = transactions
@@ -19,16 +19,16 @@ function SpendingChart({ transactions }) {
       <h2>Spending by Category</h2>
       <ResponsiveContainer width="100%" height={260}>
         <BarChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#28283c" />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
           <XAxis
             dataKey="name"
-            tick={{ fontSize: 11, fill: '#6c6c98', fontFamily: 'Syne, sans-serif', fontWeight: 600 }}
+            tick={{ fontSize: 11, fill: '#64748b', fontFamily: 'Syne, sans-serif', fontWeight: 600 }}
             axisLine={false}
             tickLine={false}
           />
           <YAxis
             tickFormatter={(v) => `$${v}`}
-            tick={{ fontSize: 11, fill: '#6c6c98', fontFamily: 'JetBrains Mono, monospace' }}
+            tick={{ fontSize: 11, fill: '#64748b', fontFamily: 'JetBrains Mono, monospace' }}
             axisLine={false}
             tickLine={false}
             width={48}
@@ -36,18 +36,18 @@ function SpendingChart({ transactions }) {
           <Tooltip
             formatter={(value) => [`$${value.toFixed(2)}`, 'Spending']}
             contentStyle={{
-              background: '#1d1d2a',
-              border: '1px solid #28283c',
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
               borderRadius: '8px',
               fontFamily: 'Syne, sans-serif',
               fontSize: 13,
-              boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+              boxShadow: '0 8px 24px rgba(30,45,61,0.10)',
             }}
             itemStyle={{
-              color: '#6c6c98',
+              color: '#64748b',
             }}
-            labelStyle={{ color: '#6c6c98', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 4 }}
-            cursor={{ fill: 'rgba(255,255,255,0.03)' }}
+            labelStyle={{ color: '#1e2d3d', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 4 }}
+            cursor={{ fill: 'rgba(14,165,233,0.04)' }}
           />
           <Bar dataKey="value" name="Spending" radius={[5, 5, 0, 0]}>
             {data.map((_, index) => (
