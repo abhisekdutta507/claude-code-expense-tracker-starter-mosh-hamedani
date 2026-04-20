@@ -452,3 +452,171 @@ td .expense-amount {
   color: var(--expense);
   background: var(--expense-dim);
 }
+
+/* ─── Responsive ─── */
+
+@media (max-width: 720px) {
+  .app {
+    padding: 36px 20px 80px;
+  }
+
+  .app-header h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 560px) {
+  .app {
+    padding: 24px 16px 64px;
+  }
+
+  /* Header */
+  .app-header {
+    margin-bottom: 28px;
+  }
+
+  .app-logo {
+    font-size: 26px;
+  }
+
+  .app-header h1 {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  /* Summary cards — single column */
+  .summary {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .summary-card {
+    padding: 16px 18px;
+  }
+
+  .income-amount,
+  .expense-amount,
+  .balance-amount {
+    font-size: 22px;
+  }
+
+  /* Spending chart */
+  .spending-chart {
+    padding: 18px 16px 12px;
+  }
+
+  /* Add Transaction Form — stacked fields */
+  .add-transaction {
+    padding: 18px 16px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  .field,
+  .field:nth-child(2) {
+    flex: unset;
+    min-width: 100%;
+  }
+
+  form select {
+    width: 100%;
+    min-width: 100%;
+    flex: unset;
+  }
+
+  form button {
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  /* Transaction list */
+  .transactions {
+    padding: 18px 16px;
+  }
+
+  .transactions-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filters {
+    width: 100%;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .filters select {
+    width: 100%;
+  }
+
+  /* Table → card layout */
+  table  { display: block; }
+  thead  { display: none; }
+  tbody  { display: block; }
+
+  tbody tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 14px 0;
+    gap: 5px 12px;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover      { background: transparent; }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  td {
+    border-bottom: none;
+    padding: 0;
+    font-size: 13px;
+  }
+
+  /* Row 1: date — full width */
+  td:nth-child(1) {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  /* Row 2 left: description */
+  td:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Row 2 right: amount */
+  td:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: right;
+    align-self: center;
+  }
+
+  /* Row 3 left: category */
+  td:nth-child(3) {
+    grid-column: 1;
+    grid-row: 3;
+    align-self: center;
+  }
+
+  /* Row 3 right: delete */
+  td:nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+  }
+
+  td .income-amount,
+  td .expense-amount {
+    font-size: 13px;
+  }
+}

@@ -6,7 +6,9 @@
       "Bash(npm install *)",
       "Bash(npm run *)",
       "Read(//tmp/**)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git commit *)",
+      "Bash(git add *)"
     ]
   }
 }
