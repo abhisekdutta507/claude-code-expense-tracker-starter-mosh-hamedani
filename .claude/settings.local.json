@@ -5,7 +5,8 @@
       "mcp__context7__query-docs",
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }

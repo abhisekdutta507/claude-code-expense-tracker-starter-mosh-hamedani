@@ -1,8 +1,9 @@
 # Expense Tracker
 
-> This is the starter project used in my [Claude Code course](https://codewithmosh.com/p/claude-code).
+> Starter project for the [Claude Code course](https://codewithmosh.com/p/claude-code) by Mosh Hamedani.
+> A React expense tracker intentionally built with a bug, rough UI, and messy code — fixed together throughout the course.
 
-A basic expense tracker app built with React. It intentionally has a bug, poor UI, and messy code — all of which we fix together throughout the course.
+---
 
 ## Getting Started
 
@@ -11,145 +12,135 @@ npm install
 npm run dev
 ```
 
-Then open your browser at `http://localhost:5173`.
+Open your browser at `http://localhost:5173`.
 
-## Claude Code Commands
+---
 
-#### Launch Claude CLI
+## Claude Code Reference
 
-First, visit the project's root directory. Then run,
+### Launch Claude CLI
 
 ```bash
+# Start a new session
 claude
-```
 
-If you are re-starting an old session,
-
-```bash
+# Resume a previous session
 claude --resume
 ```
 
-#### Set the AI model for Claude Code
+### Essential Commands
 
-```bash
-/model
-```
+| Command | Description |
+|---|---|
+| `/model` | Set the AI model |
+| `/terminal-setup` | Enable multiline input in terminal |
+| `/init` | Initialize Claude Code memory in project root |
+| `/cost` | View API usage cost (Pay-as-you-go) |
+| `/context` | Check context window usage |
 
-#### Setup terminal for multiline commands
+### Managing Context & Cost
 
-```bash
-/terminal-setup
-```
+| Command | Behavior |
+|---|---|
+| `/clear` | Wipe conversation history and start fresh |
+| `/compact` | Summarize history to free context while preserving continuity |
 
-#### Initialize Claude Code memory in the project's root
+### Switching Modes
 
-```bash
-/init
-```
+Press `Shift + Tab` to cycle through:
 
-#### Change Claude modes through CLI
+- **Normal** — standard interaction
+- **Plan** — review before acting
+- **Auto-Accept** — approve all actions automatically
+- **Bypass** — skip confirmation prompts
 
-Press SHIFT + TAB from Keyboard to toggle through different modes.
+---
 
-- Normal Mode
-- Plan Mode
-- Auto-Accept Mode
-- Bypass Mode
+## MCP Tools
 
-#### How much did it cost?
+### Connect context7 (local)
 
-If you are using Pay as you go API:
-
-```bash
-/cost
-```
-
-#### How much context we are using?
-
-It displays the total usage of the available contexts.
-
-```bash
-/context
-```
-
-#### How can we reduce cost?
-
-##### /clear Command
-
-`/clear` starts a fresh conversation with an empty context, completely wiping your conversation history. This is useful when you're wrapping up a task and moving on to something entirely different.
-
-##### /compact Command
-
-`/compact` summarizes your entire conversation history to free up context space, then replaces the full message history with that condensed summary. Instead of erasing everything like `/clear` does, it lets you preserve continuity while reducing token usage.
-
-#### Connect your first local MCP server
-
-Visit [context7.com/dashboard](https://context7.com/dashboard)
-
-##### Install context7 locally
+Visit [context7.com/dashboard](https://context7.com/dashboard) to get your API key, then:
 
 ```bash
 claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp --api-key YOUR_API_KEY
 ```
 
-##### List the MCP servers
+List connected servers:
 
 ```bash
 /mcp
 ```
 
-#### Create a custom SKILL
+---
 
-```bash
-create a custom skill called <<skill name>>. some description of the skill.
+## Skills
+
+### Create a custom skill
+
+```
+create a custom skill called <skill-name>. <description of what it does>
 ```
 
-Then run the skill,
+Run it:
 
 ```bash
 /deploy
 ```
 
-#### Add an existing SKILL
+### Add a skill from the marketplace
 
-Visit [Skills Marketplace](https://skillsmp.com/)
-
-Install your first skill [frontend-design here](https://skillsmp.com/skills/anthropics-claude-code-plugins-frontend-design-skills-frontend-design-skill-md).
-
-Also, you can use the CLI command to add skills.
+Browse at [skillsmp.com](https://skillsmp.com/) or install via CLI:
 
 ```bash
 npx skills add anthropics/claude-code
 ```
 
-The fun of using the `/frontend-design` skill. Try running the below command,
+**Example** — install and run the `frontend-design` skill:
 
 ```bash
-/frontend-design imporove the look and feel of the app. make it modern and polished. give me some suggestions on light themes.
+# Install from: https://skillsmp.com/skills/anthropics-claude-code-plugins-frontend-design-skills-frontend-design-skill-md
+
+/frontend-design improve the look and feel of the app. make it modern and polished. give me some suggestions on light themes.
 ```
 
-#### What is Checkpointing?
+---
 
-Track, rewind, and summarize Claude’s edits and conversation to manage session state.
+## Checkpointing
 
-Claude Code automatically tracks Claude’s file edits as you work, allowing you to quickly undo changes and rewind to previous states if anything gets off track.
+Claude Code automatically tracks file edits so you can rewind to any earlier state.
 
-Press `Esc` twice (`Esc` + `Esc`) or use the `/rewind` command to open the rewind menu. A scrollable list shows each of your prompts from the session. Select the point you want to act on, then choose an action:
-- **Restore code and conversation**: revert both code and conversation to that point
-- **Restore conversation**: rewind to that message while keeping current code
-- **Restore code**: revert file changes while keeping the conversation
-- **Summarize from here**: compress the conversation from this point forward into a summary, freeing context window space
-- **Never mind**: return to the message list without making changes
+Press `Esc` + `Esc` or run `/rewind` to open the rewind menu. Select a prompt from your session history, then choose an action:
 
-#### What is a Sub agents?
+| Action | Effect |
+|---|---|
+| **Restore code and conversation** | Revert both code and chat to that point |
+| **Restore conversation** | Rewind chat only, keep current code |
+| **Restore code** | Revert code only, keep the conversation |
+| **Summarize from here** | Compress conversation from this point to free context |
+| **Never mind** | Cancel and return to the list |
 
-##### Creating new agents
+---
 
-From the Claude terminal type the below command:
+## Sub-agents
+
+### Creating a new agent
 
 ```bash
 /agents
 ```
 
-- **Step 1**: Press Left/Right Arrow (<- or ->) keys to navigate between `Running` and `Library` tabs.
-- **Step 2**: Select `Create new agent` from the available options.
+- Use `←` / `→` to navigate between **Running** and **Library** tabs
+- Select **Create new agent** from the available options
+
+**Example** — create a code-reviewer sub-agent.
+
+```bash
+help me review my code, identify issues and suggest improvements for readability, performance and best practices.
+```
+
+### Run the sub agent
+
+```bash
+use the code-review subagent to review my code
+``` 
